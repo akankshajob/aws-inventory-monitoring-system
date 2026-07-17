@@ -1,0 +1,70 @@
+{% extends 'inventory/base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-7">
+    <div class="card">
+      <div class="card-header py-3" style="background:#1a3a6b; color:#fff;">
+        <i class="fas fa-edit me-2"></i>Update Stock — {{ product.product_name }}
+      </div>
+      <div class="card-body p-4">
+
+        <!-- Current Status Box -->
+        <div class="alert alert-info mb-4">
+          <div class="row text-center">
+            <div class="col">
+              <div class="fw-bold fs-5">{{ product.current_quantity }}</div>
+              <small>Current Qty</small>
+            </div>
+            <div class="col">
+              <div class="fw-bold fs-5">{{ product.min_threshold }}</div>
+              <small>Min Threshold</small>
+            </div>
+            <div class="col">
+              <div class="fw-bold fs-5">{{ product.category }}</div>
+              <small>Category</small>
+            </div>
+            <div class="col">
+              <div class="fw-bold fs-5">
+                {% with status=product.get_stock_status %}
+                  {% if status == 'Normal' %}<span style="color:#1E8449;">✓ Normal</span>
+                  {% elif status == 'Low' %}<span style="color:#F39C12;">⚠ Low</span>
+                  {% else %}<span style="color:#E74C3C;">✗ {{ status }}</span>
+                  {% endif %}
+                {% endwith %}
+              </div>
+              <small>Status</small>
+            </div>
+          </div>
+        </div>
+
+        <form method="post">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label fw-bold">New Quantity</label>
+              <input type="number" name="current_quantity" class="form-control"
+                     value="{{ product.current_quantity }}" min="0" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label fw-bold">Min Threshold</label>
+              <input type="number" name="min_threshold" class="form-control"
+                     value="{{ product.min_threshold }}" min="1" required>
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="form-label fw-bold">Remarks (optional)</label>
+            <textarea name="remarks" class="form-control" rows="2"
+                      placeholder="e.g. Received new shipment from supplier"></textarea>
+          </div>
+          <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-success px-4">
+              <i class="fas fa-save me-2"></i>Update Stock
+            </button>
+            <a href="{% url 'dashboard' %}" class="btn btn-outline-secondary px-4">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

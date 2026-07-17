@@ -1,0 +1,55 @@
+{% extends 'inventory/base.html' %}
+{% block auth_content %}
+<div style="min-height:100vh; background: linear-gradient(135deg, #1a3a6b 0%, #1D9E75 100%);
+            display:flex; align-items:center; justify-content:center;">
+  <div style="width: 420px;">
+
+    <div class="text-center mb-4">
+      <div style="background:rgba(255,255,255,0.15); width:80px; height:80px; border-radius:50%;
+                  display:flex; align-items:center; justify-content:center; margin: 0 auto 16px;">
+        <i class="fas fa-boxes fa-2x text-white"></i>
+      </div>
+      <h3 class="text-white fw-bold">Safex Glove</h3>
+      <p class="text-white-50">Inventory Monitoring System</p>
+      <small class="text-white-50">Blinkex Overseas, Pune</small>
+    </div>
+
+    <div class="card p-4">
+      <h5 class="fw-bold mb-4 text-center" style="color:#1a3a6b;">
+        <i class="fas fa-lock me-2"></i>Login to Your Account
+      </h5>
+
+      {% if form.errors %}
+        <div class="alert alert-danger py-2">
+          <i class="fas fa-exclamation-circle me-2"></i>Invalid username or password.
+        </div>
+      {% endif %}
+
+      <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label class="form-label fw-500" style="color:#1a3a6b;">Username</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+            <input type="text" name="username" class="form-control" placeholder="Enter username" required autofocus>
+          </div>
+        </div>
+        <div class="mb-4">
+          <label class="form-label fw-500" style="color:#1a3a6b;">Password</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+            <input type="password" name="password" class="form-control" placeholder="Enter password" required>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">
+          <i class="fas fa-sign-in-alt me-2"></i>Login
+        </button>
+      </form>
+    </div>
+
+    <p class="text-center mt-3 text-white-50" style="font-size:0.8rem;">
+      Cloud-Based Inventory System — AWS Powered
+    </p>
+  </div>
+</div>
+{% endblock %}

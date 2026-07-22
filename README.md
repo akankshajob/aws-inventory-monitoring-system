@@ -4,7 +4,7 @@
 ![Django](https://img.shields.io/badge/Django-Framework-green)
 ![AWS](https://img.shields.io/badge/AWS-Cloud-orange)
 ![MySQL](https://img.shields.io/badge/MySQL-Database-blue)
-![License](https://img.shields.io/badge/License-MIT-lightgrey)
+
 
 A cloud-based inventory management system built with **Django** and **Amazon Web Services (AWS)**.
 

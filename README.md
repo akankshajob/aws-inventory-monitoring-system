@@ -14,16 +14,48 @@ A scheduled AWS Lambda function checks inventory against configured thresholds a
 
 ---
 
+## Project Highlights
+
+- Cloud deployment using Amazon EC2
+- Managed MySQL database with Amazon RDS
+- Automated inventory monitoring using AWS Lambda
+- Scheduled background execution with Amazon EventBridge
+- Email notifications through Amazon SNS
+- CloudWatch logging for monitoring Lambda execution
+- Role-Based Access Control (Admin & Warehouse Manager)
+- Secure cloud configuration using AWS IAM
+
+---
+
 ## Features
 
-- Secure User Authentication
-- Inventory Management (CRUD)
-- Product Stock Monitoring
-- Low Stock Threshold Alerts
-- Automated Email Notifications
-- Role-Based Access
-- Alert History
-- Cloud Deployment on AWS
+### Administrator
+
+- Secure login
+- Dashboard overview
+- Add, edit and delete products
+- Configure minimum stock thresholds
+- View alert history
+- Manage inventory records
+
+### Warehouse Manager
+
+- Secure login
+- Dashboard overview
+- Update stock quantities
+- View alert history
+- Monitor available inventory
+
+### Automated Monitoring
+
+- Scheduled inventory checks
+- Low-stock detection
+- Automatic email notifications
+- Alert history logging
+
+---
+
+
 
 ## Tech Stack
 

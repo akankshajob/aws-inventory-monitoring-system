@@ -54,47 +54,208 @@ A scheduled AWS Lambda function checks inventory against configured thresholds a
 - Alert history logging
 
 ---
-
-
-
-## Tech Stack
+## Technology Stack
 
 ### Backend
+
 - Python
 - Django
 
 ### Frontend
+
 - HTML
 - CSS
 - Bootstrap
 
 ### Database
-- Amazon RDS (MySQL)
+
+- MySQL
+- Amazon RDS
 
 ### AWS Services
+
 - Amazon EC2
 - Amazon RDS
 - AWS Lambda
+- Amazon EventBridge
 - Amazon SNS
 - Amazon CloudWatch
 - AWS IAM
 
-## Project Workflow
+### Deployment
 
-1. User logs into the application.
-2. Products are managed through the dashboard.
-3. Inventory data is stored in Amazon RDS.
-4. AWS Lambda periodically checks stock levels.
-5. Low-stock products trigger email notifications through Amazon SNS.
-6. CloudWatch logs monitor the execution of background tasks.
-
-## Future Improvements
-
-- Dashboard Analytics
-- Barcode/QR Code Support
-- REST API
-- Docker Deployment
-- CI/CD Pipeline
+- Ubuntu Linux
+- Gunicorn
+- Nginx
+- Git
+- GitHub
 
 ---
+
+## Project Workflow
+
+1. Users log in to the application.
+2. Administrators manage products and configure stock thresholds.
+3. Warehouse managers update product quantities.
+4. Inventory data is stored in Amazon RDS.
+5. Amazon EventBridge triggers AWS Lambda on a schedule.
+6. Lambda compares current stock with configured thresholds.
+7. If stock falls below the threshold, Amazon SNS sends an email notification.
+8. CloudWatch records execution logs for monitoring and troubleshooting.
+
+---
+
+## Application Screenshots
+
+### Admin Login
+
+![Admin Login](assets/admin%20login.png)
+
+---
+
+### Admin Dashboard
+
+![Admin Dashboard](assets/admin%20dashboard.png)
+
+---
+
+### Add Product
+
+![Add Product](assets/admin%20add%20product.png)
+
+---
+
+### Alert History
+
+![Alert History](assets/admin%20alert%20history.png)
+
+---
+
+### Manager Login
+
+![Manager Login](assets/manager%20login.png)
+
+---
+
+### Manager Dashboard
+
+![Manager Dashboard](assets/manager%20-dashboard.png)
+
+---
+
+### Update Stock
+
+![Update Stock](assets/manager-update%20stock.png)
+
+---
+
+### Manager Alert History
+
+![Manager Alert History](assets/manager%20alert%20history.png)
+
+---
+
+## Repository Structure
+
+```
+aws-inventory-monitoring-system
+│
+├── assets/
+│   ├── admin login.png
+│   ├── admin dashboard.png
+│   ├── admin add product.png
+│   ├── admin alert history.png
+│   ├── manager login.png
+│   ├── manager -dashboard.png
+│   ├── manager-update stock.png
+│   └── manager alert history.png
+│
+├── docs/
+│   └── aws-architecture.png
+│
+├── inventory/
+├── inventory_project/
+├── manage.py
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/akankshajob/aws-inventory-monitoring-system.git
+```
+
+Move into the project directory
+
+```bash
+cd aws-inventory-monitoring-system
+```
+
+Create a virtual environment
+
+```bash
+python -m venv .venv
+```
+
+Activate the environment
+
+Windows
+
+```bash
+.venv\Scripts\activate
+```
+
+Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+Run migrations
+
+```bash
+python manage.py migrate
+```
+
+Start the development server
+
+```bash
+python manage.py runserver
+```
+
+---
+
+## Future Enhancements
+
+- Multi-warehouse inventory support
+- Inventory analytics dashboard
+- Barcode and QR code integration
+- REST API
+- Docker containerization
+- CI/CD using GitHub Actions
+
+---
+
+## Skills Demonstrated
+
+- Cloud Deployment
+- Serverless Computing
+- AWS Service Integration
+- Django Web Development
+- MySQL Database Management
+- Cloud Monitoring
+- Cloud Security
+- IAM Configuration
+- Role-Based Access Control
+- Git Version Control
+
+---
+
+## Acknowledgement
+
 Developed as a cloud computing project demonstrating real-world inventory automation using Django and AWS.

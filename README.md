@@ -1,6 +1,18 @@
 # AWS Inventory Monitoring System
 
-A cloud-based inventory monitoring system built with Django and deployed on AWS to automate inventory management, monitor stock levels, and generate low-stock alerts.
+
+A cloud-hosted inventory management system developed for automate stock monitoring and inventory management using **Django** and **Amazon Web Services (AWS)**.
+
+The application enables administrators and warehouse managers to manage inventory through a secure web interface while automatically monitoring stock levels. 
+A scheduled AWS Lambda function checks inventory against configured thresholds and sends email notifications using Amazon SNS whenever products fall below their minimum stock level.
+
+---
+
+## Architecture
+
+![AWS Architecture](docs/aws-architecture.png)
+
+---
 
 ## Features
 

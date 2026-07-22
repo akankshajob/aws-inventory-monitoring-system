@@ -1,180 +1,151 @@
 # AWS Inventory Monitoring System
 
+![Python](https://img.shields.io/badge/Python-3.x-blue)
+![Django](https://img.shields.io/badge/Django-Framework-green)
+![AWS](https://img.shields.io/badge/AWS-Cloud-orange)
+![MySQL](https://img.shields.io/badge/MySQL-Database-blue)
+![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
-A cloud-hosted inventory management system developed for automate stock monitoring and inventory management using **Django** and **Amazon Web Services (AWS)**.
+A cloud-based inventory management system built with **Django** and **Amazon Web Services (AWS)**.
 
-The application enables administrators and warehouse managers to manage inventory through a secure web interface while automatically monitoring stock levels. 
-A scheduled AWS Lambda function checks inventory against configured thresholds and sends email notifications using Amazon SNS whenever products fall below their minimum stock level.
+The application enables administrators and warehouse managers to securely manage inventory through a web interface while automating low-stock monitoring using serverless AWS services. A scheduled AWS Lambda function periodically checks inventory levels and sends email notifications through Amazon SNS whenever stock falls below configured thresholds.
 
 ---
 
-## Architecture
+# Table of Contents
+
+- Project Overview
+- AWS Architecture
+- AWS Architecture Overview
+- Key Features
+- Technology Stack
+- Project Workflow
+- Application Screenshots
+- Repository Structure
+- Installation
+- Future Enhancements
+- Cloud & Development Skills
+- Author
+
+---
+
+# Project Overview
+
+This project demonstrates how cloud services can be integrated with a Django web application to automate inventory monitoring and stock management.
+
+The application is deployed on AWS and combines traditional web development with serverless computing to provide automatic inventory checks, email notifications, centralized logging, and secure cloud resource management.
+
+---
+
+# AWS Architecture
 
 ![AWS Architecture](docs/aws-architecture.png)
 
 ---
 
-## Project Highlights
+# AWS Architecture Overview
 
-- Cloud deployment using Amazon EC2
-- Managed MySQL database with Amazon RDS
-- Automated inventory monitoring using AWS Lambda
-- Scheduled background execution with Amazon EventBridge
-- Email notifications through Amazon SNS
-- CloudWatch logging for monitoring Lambda execution
-- Role-Based Access Control (Admin & Warehouse Manager)
-- Secure cloud configuration using AWS IAM
+The application follows a cloud-native architecture where the Django application is hosted on **Amazon EC2** and uses **Amazon RDS (MySQL)** for persistent data storage.
+
+An **Amazon EventBridge** scheduled rule triggers an **AWS Lambda** function at regular intervals to monitor inventory levels. Whenever stock falls below configured thresholds, Lambda publishes a notification to **Amazon SNS**, which sends email alerts to users.
+
+**Amazon CloudWatch** captures execution logs for monitoring and troubleshooting, while **AWS IAM** securely manages permissions across all AWS services.
 
 ---
 
-## Features
+# Key Features
 
-### Administrator
-
-- Secure login
-- Dashboard overview
-- Add, edit and delete products
-- Configure minimum stock thresholds
-- View alert history
-- Manage inventory records
-
-### Warehouse Manager
-
-- Secure login
-- Dashboard overview
-- Update stock quantities
-- View alert history
-- Monitor available inventory
-
-### Automated Monitoring
-
-- Scheduled inventory checks
-- Low-stock detection
-- Automatic email notifications
-- Alert history logging
-
----
-## Technology Stack
-
-### Backend
-
-- Python
-- Django
-
-### Frontend
-
-- HTML
-- CSS
-- Bootstrap
-
-### Database
-
-- MySQL
-- Amazon RDS
-
-### AWS Services
-
-- Amazon EC2
-- Amazon RDS
-- AWS Lambda
-- Amazon EventBridge
-- Amazon SNS
-- Amazon CloudWatch
-- AWS IAM
-
-### Deployment
-
-- Ubuntu Linux
-- Gunicorn
-- Nginx
-- Git
-- GitHub
+- Secure user authentication
+- Role-based access control
+- Inventory CRUD operations
+- Product stock management
+- Configurable low-stock thresholds
+- Automated inventory monitoring
+- Scheduled AWS Lambda execution
+- Email notifications using Amazon SNS
+- Alert history tracking
+- Cloud deployment on AWS
+- CloudWatch logging and monitoring
+- Secure AWS IAM integration
 
 ---
 
-## Project Workflow
+# Technology Stack
 
-1. Users log in to the application.
-2. Administrators manage products and configure stock thresholds.
+| Category | Technologies |
+|-----------|--------------|
+| **Backend** | Python, Django |
+| **Frontend** | HTML, CSS, Bootstrap |
+| **Database** | MySQL, Amazon RDS |
+| **Cloud Services** | Amazon EC2, AWS Lambda, Amazon EventBridge, Amazon SNS, Amazon CloudWatch, AWS IAM |
+| **Deployment** | Ubuntu Linux, Gunicorn, Nginx |
+| **Version Control** | Git, GitHub |
+
+---
+
+# Project Workflow
+
+1. Users securely log in to the application.
+2. Administrators manage inventory records and configure minimum stock thresholds.
 3. Warehouse managers update product quantities.
-4. Inventory data is stored in Amazon RDS.
-5. Amazon EventBridge triggers AWS Lambda on a schedule.
-6. Lambda compares current stock with configured thresholds.
-7. If stock falls below the threshold, Amazon SNS sends an email notification.
-8. CloudWatch records execution logs for monitoring and troubleshooting.
+4. Product information is stored in Amazon RDS.
+5. Amazon EventBridge triggers AWS Lambda on a scheduled interval.
+6. Lambda retrieves inventory data and compares stock against configured thresholds.
+7. Products below the minimum stock level generate notifications through Amazon SNS.
+8. Amazon CloudWatch records execution logs for monitoring and troubleshooting.
 
 ---
 
-## Application Screenshots
+# Application Screenshots
 
-### Admin Login
+## Admin Login
 
 ![Admin Login](assets/admin%20login.png)
 
----
-
-### Admin Dashboard
+## Admin Dashboard
 
 ![Admin Dashboard](assets/admin%20dashboard.png)
 
----
-
-### Add Product
+## Add Product
 
 ![Add Product](assets/admin%20add%20product.png)
 
----
-
-### Alert History
+## Alert History
 
 ![Alert History](assets/admin%20alert%20history.png)
 
----
-
-### Manager Login
+## Manager Login
 
 ![Manager Login](assets/manager%20login.png)
 
----
-
-### Manager Dashboard
+## Manager Dashboard
 
 ![Manager Dashboard](assets/manager%20-dashboard.png)
 
----
-
-### Update Stock
+## Update Stock
 
 ![Update Stock](assets/manager-update%20stock.png)
 
----
-
-### Manager Alert History
+## Manager Alert History
 
 ![Manager Alert History](assets/manager%20alert%20history.png)
 
 ---
 
-## Repository Structure
+# Repository Structure
 
-```
-aws-inventory-monitoring-system
+```text
+aws-inventory-monitoring-system/
 │
 ├── assets/
-│   ├── admin login.png
-│   ├── admin dashboard.png
-│   ├── admin add product.png
-│   ├── admin alert history.png
-│   ├── manager login.png
-│   ├── manager -dashboard.png
-│   ├── manager-update stock.png
-│   └── manager alert history.png
 │
 ├── docs/
 │   └── aws-architecture.png
 │
 ├── inventory/
+│
 ├── inventory_project/
+│
 ├── manage.py
 ├── requirements.txt
 └── README.md
@@ -182,80 +153,99 @@ aws-inventory-monitoring-system
 
 ---
 
-## Installation
+# Installation
 
-Clone the repository
+### Clone the repository
 
 ```bash
 git clone https://github.com/akankshajob/aws-inventory-monitoring-system.git
 ```
 
-Move into the project directory
+### Navigate to the project
 
 ```bash
 cd aws-inventory-monitoring-system
 ```
 
-Create a virtual environment
+### Create a virtual environment
 
 ```bash
 python -m venv .venv
 ```
 
-Activate the environment
+### Activate the environment
 
-Windows
+#### Windows
 
 ```bash
 .venv\Scripts\activate
 ```
 
-Install dependencies
+#### Linux / macOS
+
+```bash
+source .venv/bin/activate
+```
+
+### Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Run migrations
+### Apply database migrations
 
 ```bash
+python manage.py makemigrations
 python manage.py migrate
 ```
 
-Start the development server
+### Start the development server
 
 ```bash
 python manage.py runserver
 ```
 
+The application will be available at:
+
+```
+http://127.0.0.1:8000/
+```
+
 ---
 
-## Future Enhancements
+# Future Enhancements
 
-- Multi-warehouse inventory support
-- Inventory analytics dashboard
-- Barcode and QR code integration
-- REST API
 - Docker containerization
-- CI/CD using GitHub Actions
+- REST API integration
+- CI/CD pipeline using GitHub Actions
+- Inventory analytics dashboard
+- Barcode and QR code support
+- Multi-warehouse inventory management
+- Role-based audit logging
+- Real-time inventory updates
 
 ---
 
-## Skills Demonstrated
+# Cloud & Development Skills
 
-- Cloud Deployment
+- Cloud Application Deployment
 - Serverless Computing
 - AWS Service Integration
 - Django Web Development
 - MySQL Database Management
 - Cloud Monitoring
 - Cloud Security
-- IAM Configuration
-- Role-Based Access Control
+- IAM Permission Management
+- Role-Based Access Control (RBAC)
 - Git Version Control
+- Linux Server Deployment
+- Nginx & Gunicorn Configuration
 
 ---
 
-## Acknowledgement
+# Author
 
-Developed as a cloud computing project demonstrating real-world inventory automation using Django and AWS.
+**Akanksha Job**
+
+GitHub: https://github.com/akankshajob
